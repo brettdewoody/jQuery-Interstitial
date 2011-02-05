@@ -9,7 +9,13 @@
  * http://www.DigitalWaxWorks.com
  * Created: Feb 4, 2011
  * Updated: Feb 4, 2011
-
+ *
+ * Copyright (c) 2011 Brett DeWoody
+ * 
+ * Dual licensed under the MIT and GPL licenses:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *   http://www.gnu.org/licenses/gpl.html
+ *
  * Special thanks to Soh Tanaka (http://www.sohtanaka.com) for inspiring 
  * this jQuery-based interstitial popup.  You can read about his original 
  * method here on Soh Tanaka's webite:
