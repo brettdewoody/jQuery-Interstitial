@@ -1,0 +1,11 @@
+A jQuery utility plugin for creating interstitial overlays.  The plugin will create a modal overlay on top of your website with content from another URL ( webpage, image, etc).
+
+When used, a 
+
+Examples:
+
+Simple overlay
+     $().interstitial('open', {
+       'url' : 'popup.html'
+     });
+
