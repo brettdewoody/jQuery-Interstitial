@@ -1,0 +1,48 @@
+A jQuery utility plugin for creating interstitial overlays.
+
+When called a transparent overlay will gray out your site and the content from the URL will appear over top in the center of the screen. Clicking anywhere outside the popup will cause the interstitial to fade away and reveal the site again.  It's also possible to close the interstitial with a link.
+
+## Usage ##
+
+    <link href="jquery.interstitial.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js" type="text/javascript"></script> 
+    <script src="jquery.interstitial.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+	 $(document).ready(function(){
+           $().interstitial('open', {
+              'url' : 'popup.html'
+            });
+         });
+     </script>
+
+     The above will fade out the site and display popup.html on top.
+
+
+## Options ##
+     
+     'url'                        : ''                         // The URL of the popup file
+     'width'                    : 600                     // The width of the popup
+     'height'                   : 400                     // The height of the popup
+     'opacity'                 : 70                       // The opacity of the overlay 
+     'id'                         : 'popupBlock'         // The ID of the popup's wrapper div
+
+
+## Closing the interstital ##
+
+The interstitial will close when the user clicks outside the popup. It can also be closed using the interstitial('close') method. To create a 'close' link you would do this:
+
+     <a href="#" onClick="javascript:$().interstitial('close'); return false">Close</a>
+
+
+## Use with jquery.cookie.js ##
+
+If you would like to display the interstitial only sometimes (once per session, week, etc) you can easily combine jquery.interstitial with the jQuery Cookie plugin (https://github.com/carhartl/jquery-cookie).  If you wanted to display your interstitial to users on just the first visit to your website you could use the following:
+
+     if (!$.cookie('COOKIE NAME')) {
+	  $().interstitial('open', {
+               'url'     : 'popup.html'
+           }); 
+	  
+	  //Create a cookie
+	  $.cookie('COOKIE NAME', 'viewed', {expires: -1, path: '/'});
+	}
