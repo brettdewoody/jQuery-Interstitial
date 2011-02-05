@@ -3,18 +3,6 @@
  * jquery.interstitial.js
  *
  * https://github.com/brettdewoody/jQuery-Interstitial
- * 
- * Brett DeWoody
- * Digital Wax Works - Bozeman, Montana
- * http://www.DigitalWaxWorks.com
- * Created: Feb 4, 2011
- * Updated: Feb 4, 2011
-<<<<<<< HEAD
- */
-
-(function( $ ){
-
-=======
  *
  * Copyright (c) 2011 Brett DeWoody
  * 
@@ -25,13 +13,12 @@
  * Special thanks to Soh Tanaka (http://www.sohtanaka.com) for inspiring 
  * this jQuery-based interstitial popup.  You can read about his original 
  * method here on Soh Tanaka's webite:
-
+ *
  * http://www.sohtanaka.com/web-design/inline-modal-window-w-css-and-jquery 
  */
 
 (function( $ ){
 
->>>>>>> deaadbfa0e528b86ddfcd0cb3160b7e31a2f4b44
   var methods = {
      open : function( options ) {
      
