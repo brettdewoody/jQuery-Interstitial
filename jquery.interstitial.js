@@ -9,6 +9,12 @@
  * http://www.DigitalWaxWorks.com
  * Created: Feb 4, 2011
  * Updated: Feb 4, 2011
+
+ * Special thanks to Soh Tanaka (http://www.sohtanaka.com) for inspiring 
+ * this jQuery-based interstitial popup.  You can read about his original 
+ * method here on Soh Tanaka's webite:
+
+ * http://www.sohtanaka.com/web-design/inline-modal-window-w-css-and-jquery 
  */
 
 (function( $ ){
