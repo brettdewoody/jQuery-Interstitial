@@ -20,11 +20,11 @@ When called a transparent overlay will gray out your site and the content from t
 
 ## Options ##
      
-     'url'                        : ''                      // The URL of the popup file
-     'width'                    : 600                  // The width of the popup
-     'height'                   : 400                  // The height of the popup
-     'opacity'                 : 70                    // The opacity of the overlay 
-     'id'                         : 'popupBlock'      // The ID of the popup's wrapper div
+     'url'                        : ''                         // The URL of the popup file
+     'width'                    : 600                     // The width of the popup
+     'height'                   : 400                     // The height of the popup
+     'opacity'                 : 70                       // The opacity of the overlay 
+     'id'                         : 'popupBlock'         // The ID of the popup's wrapper div
 
 
 ## Closing the interstital ##
