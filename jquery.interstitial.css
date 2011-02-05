@@ -1,12 +1,15 @@
-/* ================================================================ 
-Brett DeWoody
-Digital Wax Works - Bozeman, Montana
-http://www.DigitalWaxWorks.com
-Created: Feb 1, 2011
-Updated: Feb 2, 2011
- 
-CSS for the jQuery-based interstitial popup built for WebbyAwards.com
-=================================================================== */
+/* 
+ * jQuery interstitial plugin v1.0
+ * jquery.interstitial.css
+ *
+ * https://github.com/brettdewoody/jQuery-Interstitial
+ * 
+ * Brett DeWoody
+ * Digital Wax Works - Bozeman, Montana
+ * http://www.DigitalWaxWorks.com
+ * Created: Feb 4, 2011
+ * Updated: Feb 4, 2011
+ */
 
 #fade { 
 	display: none;
@@ -18,7 +21,7 @@ CSS for the jQuery-based interstitial popup built for WebbyAwards.com
 	opacity: .70;
 	z-index: 1000000;
 }
-#popup_block{
+#popupBlock {
 	display: none;
 	background-color:transparent;
 	float: left;
@@ -32,6 +35,6 @@ CSS for the jQuery-based interstitial popup built for WebbyAwards.com
 *html #fade {
 	position: absolute;
 }
-*html #popup_block {
+*html #popupBlock {
 	position: absolute;
 }
