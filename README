@@ -10,7 +10,8 @@ Example:
 
      Will fade out the site and open popup.html on top.
 
-## Options
+
+## Options ##
      
      'url'                        : ''                      // The URL of the popup file
      'width'                    : 600                  // The width of the popup
@@ -18,14 +19,15 @@ Example:
      'opacity'                 : 70                    // The opacity of the overlay 
      'id'                         : 'popupBlock'      // The ID of the popup's wrapper div
 
-## Closing the interstital
 
-The interstitial will close whenever the user clicks outside the popup. It can also be closed with a link, like this:
+## Closing the interstital ##
+
+The interstitial will close whenever the user clicks outside the popup. It can also be closed using the interstitial('close') method. To create a 'close' link you would do this:
 
      <a href="#" onClick="javascript:$().interstitial('close'); return false">Close</a>
 
 
-## Using with jquery.cookies.js
+## Using with jquery.cookies.js ##
 
 If you would like to display the interstitial only sometimes (once per session, week, etc) you can easily combine jquery.interstitial with the jQuery Cookie plugin (https://github.com/carhartl/jquery-cookie).  If you wanted to display your interstitial to users on just the first visit to your website you could use the following:
 
