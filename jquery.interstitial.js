@@ -1,80 +1,86 @@
-/* ================================================================ 
-Brett DeWoody
-Digital Wax Works - Bozeman, Montana
-http://www.DigitalWaxWorks.com
-Created: Feb 1, 2011
-Updated: Feb 2, 2011
+/* 
+ * jQuery interstitial plugin v1.0
+ * jquery.interstitial.js
+ *
+ * https://github.com/brettdewoody/jQuery-Interstitial
+ * 
+ * Brett DeWoody
+ * Digital Wax Works - Bozeman, Montana
+ * http://www.DigitalWaxWorks.com
+ * Created: Feb 4, 2011
+ * Updated: Feb 4, 2011
+ */
 
-This script creates an interstitial popup for first-time visitors
-to a website. The popup loads an external page into a dynamically
-created <div> tag.
+(function( $ ){
 
-Special thanks to Soh Tanaka (http://www.sohtanaka.com) for inspiring 
-this jQuery-based interstitial popup.  You can read about his original 
-method here on Soh Tanaka's webite:
-
-http://www.sohtanaka.com/web-design/inline-modal-window-w-css-and-jquery 
-
-=================================================================== */
-
-$(document).ready(function(){
-		
-				
-	//Open the popup		   		   
-	$.fn.popOpen = function(){
-	
-		var popURL = 'http://www.digitalwaxworks.com/labs/webbyawards/nettediframe.htm';
-		var popWidth = 831;
-		var popHeight = 662;
-		
-		var popID = 'popup_block';
+  var methods = {
+     open : function( options ) {
+     
+       var settings = {
+         'url'         			: '',
+         'width' 				: 600,
+         'height'				: 400,
+         'opacity'				: 70,
+         'id'					: 'popupBlock'
+    	};
+    	
+    	if ( options ) { 
+          $.extend( settings, options );
+        }
 		
 		//Fade in Background
 		$('body').append('<div id="fade"></div>'); 
-		$('#fade').css({'filter' : 'alpha(opacity=70)'}).fadeIn();
+		$('#fade').css({'filter' : 'alpha(opacity=' + settings.opacity + ')'}).fadeIn();
 
 		//Fade in the Popup
-		$('body').append('<div id="' + popID + '"></div>');
-		$('#' + popID).load(popURL, function() {
-			$('#' + popID).css({'width' : Number(popWidth), 'height' : Number(popHeight)}).fadeIn();
-		}).delay(1500);
+		$('body').append('<div id="' + settings.id + '"></div>');
+		$('#' + settings.id).load(settings.url, function() {
+			$('#' + settings.id).css({'width' : Number(settings.width), 'height' : Number(settings.height)}).fadeIn();
+		});
 		
 		//Define margin for center alignment (vertical + horizontal)
-		var popMargTop = popHeight / 2;
-		var popMargLeft = popWidth / 2;
+		var popMargTop = settings.height / 2;
+		var popMargLeft = settings.width / 2;
 		
 		//Apply Margin to Popup
-		$('#' + popID).css({ 
+		$('#' + settings.id).css({ 
 			'margin-top' : -popMargTop,
 			'margin-left' : -popMargLeft
-		}); 
+		});
+		
+		//On click of the fade, close the popup and fade
+		$('#fade').live('click', function() {
+	  	  $().interstitial('close');		
+		});
 
-	};
-	
-	
-	//Close the popup
-	$.fn.popClose = function() {
-		$('#fade , #popup_block').fadeOut(function() {
+     },
+     close : function( options ) {
+     
+     	var settings = {
+         'id'					: 'popupBlock'
+      	};
+    	
+    	if ( options ) { 
+          $.extend( settings, options );
+        }
+     
+		$('#fade , #' + settings.id).fadeOut(function() {
 			$('#fade').remove();  
 		});
-	};
-	
-	
-	//On click of the fade, close the popup and fade
-	$('#fade').live('click', function() {
-	  	$.fn.popClose();		
-	});
-	
-	
-	//If the cookie doesn't exist, show the interstitial popup
-	//if (!$.cookie('nettedsplashpage')) {
-	  if ($(window).width() > 851 && $(window).height() > 649) {
-	    $.fn.popOpen();
-	   }
-	  
-	  //Create a cookie
-	  //$.cookie('nettedsplashpage', 'viewed', {expires: 365, path: '/'});
-	//}
+		
+ 	 }
+  };
 
-	
-});
+  $.fn.interstitial = function( method ) {
+    
+    if ( methods[method] ) {
+      return methods[method].apply( this, Array.prototype.slice.call( arguments, 1 ));
+    } else if ( typeof method === 'object' || ! method ) {
+      return methods.init.apply( this, arguments );
+    } else {
+      $.error( 'Method ' +  method + ' does not exist on jQuery.tooltip' );
+    }    
+  
+  };
+
+})( jQuery );
