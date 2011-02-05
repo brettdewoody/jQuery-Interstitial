@@ -29,7 +29,7 @@ When called a transparent overlay will gray out your site and the content from t
 
 ## Closing the interstital ##
 
-The interstitial will close whenever the user clicks outside the popup. It can also be closed using the interstitial('close') method. To create a 'close' link you would do this:
+The interstitial will close when the user clicks outside the popup. It can also be closed using the interstitial('close') method. To create a 'close' link you would do this:
 
      <a href="#" onClick="javascript:$().interstitial('close'); return false">Close</a>
 
