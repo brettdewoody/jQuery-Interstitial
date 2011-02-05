@@ -23,7 +23,7 @@
 }
 #popupBlock {
 	display: none;
-	background-color:transparent;
+	background-color: #FFFFFF;
 	float: left;
 	position: fixed;
 	top: 50%; 
