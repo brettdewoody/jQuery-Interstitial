@@ -1,11 +1,39 @@
-A jQuery utility plugin for creating interstitial overlays.  The plugin will create a modal overlay on top of your website with content from another URL ( webpage, image, etc).
+A jQuery utility plugin for creating interstitial overlays.
 
-When used, a 
+When called a transparent overlay will gray out your site and the content from the URL will appear over top in the center of the screen. Clicking anywhere outside the popup will cause the interstitial to fade away and reveal the site again.  It's also possible to close the interstitial with a link.
 
-Examples:
+Example:
 
-Simple overlay
      $().interstitial('open', {
        'url' : 'popup.html'
      });
 
+     Will fade out the site and open popup.html on top.
+
+## Options
+     
+     'url'                        : ''                      // The URL of the popup file
+     'width'                    : 600                  // The width of the popup
+     'height'                   : 400                  // The height of the popup
+     'opacity'                 : 70                    // The opacity of the overlay 
+     'id'                         : 'popupBlock'      // The ID of the popup's wrapper div
+
+## Closing the interstital
+
+The interstitial will close whenever the user clicks outside the popup. It can also be closed with a link, like this:
+
+     <a href="#" onClick="javascript:$().interstitial('close'); return false">Close</a>
+
+
+## Using with jquery.cookies.js
+
+If you would like to display the interstitial only sometimes (once per session, week, etc) you can easily combine jquery.interstitial with the jQuery Cookie plugin (https://github.com/carhartl/jquery-cookie).  If you wanted to display your interstitial to users on just the first visit to your website you could use the following:
+
+     if (!$.cookie('COOKIE NAME')) {
+	  $().interstitial('open', {
+               'url'     : 'popup.html'
+           }); 
+	  
+	  //Create a cookie
+	  $.cookie('COOKIE NAME', 'viewed', {expires: -1, path: '/'});
+	}
