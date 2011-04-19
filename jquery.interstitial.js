@@ -22,17 +22,16 @@
   var methods = {
      open : function( options ) {
      
-       var settings = {
+       var defaults = {
          'url'         			: '',
          'width' 				: 600,
          'height'				: 400,
          'opacity'				: 70,
-         'id'					: 'popupBlock'
+         'id'					: 'popupBlock',
+         'onInterstitialClose' 	: function(){}
     	};
     	
-    	if ( options ) { 
-          $.extend( settings, options );
-        }
+        var settings = $.extend({}, defaults, options);
 		
 		//Fade in Background
 		$('body').append('<div id="fade"></div>'); 
@@ -57,22 +56,27 @@
 		//On click of the fade, close the popup and fade
 		$('#fade').live('click', function() {
 	  	  $().interstitial('close');		
+	  	  
+	  	  // onInterstitialClose callback
+    	  settings.onInterstitialClose.call(this);
 		});
 
      },
      close : function( options ) {
      
-     	var settings = {
-         'id'					: 'popupBlock'
+     	var defaults = {
+         'id'					: 'popupBlock',
+         'onInterstitialClose' 	: function(){}
       	};
     	
-    	if ( options ) { 
-          $.extend( settings, options );
-        }
+    	var settings = $.extend({}, defaults, options);
      
 		$('#fade , #' + settings.id).fadeOut(function() {
 			$('#fade').remove();  
 		});
+		
+		// onInterstitialClose callback
+    	settings.onInterstitialClose.call(this);
 		
  	 }
   };
