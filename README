@@ -20,11 +20,12 @@ When called a transparent overlay will gray out your site and the content from t
 
 ## Options ##
      
-     'url'                        : ''                         // The URL of the popup file
-     'width'                    : 600                     // The width of the popup
-     'height'                   : 400                     // The height of the popup
-     'opacity'                 : 70                       // The opacity of the overlay 
-     'id'                         : 'popupBlock'         // The ID of the popup's wrapper div
+     'url'                        : ''                                                    // The URL of the popup file
+     'width'                    : 600                                                // The width of the popup
+     'height'                   : 400                                                // The height of the popup
+     'opacity'                 : 70                                                  // The opacity of the overlay 
+     'id'                         : 'popupBlock'                                    // The ID of the popup's wrapper div
+     'onInterstitialClose' : function() {FUNCTION NAME}           // A function to run when the interstitial is closed
 
 
 ## Closing the interstital ##
@@ -32,6 +33,28 @@ When called a transparent overlay will gray out your site and the content from t
 The interstitial will close when the user clicks outside the popup. It can also be closed using the interstitial('close') method. To create a 'close' link you would do this:
 
      <a href="#" onClick="javascript:$().interstitial('close'); return false">Close</a>
+
+If you have set an onInterstitialClose callback function it will be run when the interstitial is closed.
+
+
+## Using a callback function ##
+
+If you would like to call a function or run some code when the interstitial is closed you can use the onInterstitialClose callback function. To do this, set your callback function in the options, like this:
+
+      <script type="text/javascript">
+	 $(document).ready(function(){
+           $().interstitial('open', {
+              'url' : 'popup.html',
+              'onInterstitialClose' : function() {myCallbackFunction();}
+            });
+
+            function myCallbackFunction() {
+              // Run your code here
+            }
+         });
+     </script>
+
+When the user closes the interstitial your myCallbackFunction will run.
 
 
 ## Use with jquery.cookie.js ##
