@@ -1,5 +1,5 @@
 /* 
- * jQuery interstitial plugin v1.0
+ * jQuery interstitial plugin v1.1
  * jquery.interstitial.js
  *
  * https://github.com/brettdewoody/jQuery-Interstitial
@@ -55,21 +55,20 @@
 		
 		//On click of the fade, close the popup and fade
 		$('#fade').live('click', function() {
-	  	  $().interstitial('close');		
-	  	  
-	  	  // onInterstitialClose callback
-    	  settings.onInterstitialClose.call(this);
+	  	  $().interstitial('close', settings);		
 		});
 
      },
+     
+     // Function: Close the interstitial
      close : function( options ) {
      
-     	var defaults = {
+       var defaults = {
          'id'					: 'popupBlock',
          'onInterstitialClose' 	: function(){}
-      	};
-    	
-    	var settings = $.extend({}, defaults, options);
+    	};
+     
+       var settings = $.extend({}, defaults, options);
      
 		$('#fade , #' + settings.id).fadeOut(function() {
 			$('#fade').remove();  
@@ -88,7 +87,7 @@
     } else if ( typeof method === 'object' || ! method ) {
       return methods.init.apply( this, arguments );
     } else {
-      $.error( 'Method ' +  method + ' does not exist on jQuery.tooltip' );
+      $.error( 'Method ' +  method + ' does not exist on jQuery.interstitial' );
     }    
   
   };
