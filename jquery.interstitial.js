@@ -27,6 +27,7 @@
          'width' 				: 600,
          'height'				: 400,
          'opacity'				: 70,
+				 'isiFrame'	: false,
          'id'					: 'popupBlock',
          'onInterstitialClose' 	: function(){}
     	};
@@ -39,24 +40,35 @@
 
 		//Fade in the Popup
 		$('body').append('<div id="' + settings.id + '"></div>');
-		$('#' + settings.id).load(settings.url, function() {
-			$('#' + settings.id).css({'width' : Number(settings.width), 'height' : Number(settings.height)}).fadeIn();
-		});
+		if (settings.isiFrame) {
+
+			$('<iframe />');  // Create an iframe element
+			$('<iframe />', {
+				name: 'frame',
+				id: 'iframe',
+				src: settings.url,
+			}).appendTo('#' + settings.id);
+				$('#' + settings.id).fadeIn();
+			} else {
+				$('#' + settings.id).load(settings.url, function () {
+					$('#' + settings.id).css({'width': Number(settings.width), 'height': Number(settings.height)}).fadeIn();
+				});
+
+				//Define margin for center alignment (vertical + horizontal)
+				var popMargTop = window.height / 2;
+				var popMargLeft = window.width / 2;
+
+				//Apply Margin to Popup
+				$('#' + settings.id).css({
+					'margin-top': -popMargTop,
+					'margin-left': -popMargLeft
+				});
+			}
 		
-		//Define margin for center alignment (vertical + horizontal)
-		var popMargTop = settings.height / 2;
-		var popMargLeft = settings.width / 2;
-		
-		//Apply Margin to Popup
-		$('#' + settings.id).css({ 
-			'margin-top' : -popMargTop,
-			'margin-left' : -popMargLeft
-		});
-		
-		//On click of the fade, close the popup and fade
-		$('#fade').live('click', function() {
+			//On click of the fade, close the popup and fade
+			$('#fade').live('click', function() {
 	  	  $().interstitial('close', settings);		
-		});
+			});
 
      },
      
