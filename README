@@ -67,5 +67,5 @@ If you would like to display the interstitial only sometimes (once per session, 
            }); 
 	  
 	  //Create a cookie
-	  $.cookie('COOKIE NAME', 'viewed', {expires: -1, path: '/'});
+	  $.cookie('COOKIE NAME', 'viewed', {expires: 365, path: '/'});
 	}
