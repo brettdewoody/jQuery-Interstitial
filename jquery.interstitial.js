@@ -54,7 +54,7 @@
 		});
 		
 		//On click of the fade, close the popup and fade
-		$('#fade').live('click', function() {
+		$('#fade').on('click', function() {
 	  	  $().interstitial('close', settings);		
 		});
 
